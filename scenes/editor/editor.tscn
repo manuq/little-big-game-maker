@@ -1,0 +1,198 @@
+[gd_scene load_steps=17 format=3 uid="uid://cn62brpljegct"]
+
+[ext_resource type="Script" path="res://scenes/editor/editor.gd" id="1_84hue"]
+[ext_resource type="PackedScene" uid="uid://cqn5urh0mff7h" path="res://scenes/editor/editor-canvas.tscn" id="1_ido1c"]
+[ext_resource type="Texture2D" uid="uid://gfxeh8eul1hw" path="res://assets/tiles/tilemap.png" id="2_2yrb2"]
+
+[sub_resource type="Theme" id="Theme_3bn6q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jeai"]
+atlas = ExtResource("2_2yrb2")
+region = Rect2(285, 77, 18, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubfmv"]
+atlas = ExtResource("2_2yrb2")
+region = Rect2(133, 114, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xb1j"]
+atlas = ExtResource("2_2yrb2")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u45qu"]
+load_path = "res://.godot/imported/tilemap.png-10fbb463c0b7dce755344fe8c5ff2d12.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8a2y"]
+atlas = SubResource("CompressedTexture2D_u45qu")
+region = Rect2(114, 114, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aynbm"]
+atlas = SubResource("CompressedTexture2D_u45qu")
+region = Rect2(133, 38, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha8wa"]
+atlas = SubResource("CompressedTexture2D_u45qu")
+region = Rect2(151, 114, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iijrl"]
+atlas = SubResource("CompressedTexture2D_u45qu")
+region = Rect2(171, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty3aa"]
+atlas = SubResource("CompressedTexture2D_u45qu")
+region = Rect2(95, 133, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_126uv"]
+atlas = SubResource("CompressedTexture2D_u45qu")
+region = Rect2(95, 114, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m611q"]
+atlas = SubResource("CompressedTexture2D_u45qu")
+region = Rect2(76, 114, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbej1"]
+atlas = SubResource("CompressedTexture2D_u45qu")
+region = Rect2(209, 133, 18, 18)
+
+[node name="editor" type="Node2D"]
+script = ExtResource("1_84hue")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Toolbar" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3bn6q")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Toolbar"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Toolbar/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+columns = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_0jeai")
+expand_icon = true
+
+[node name="Button3" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_ubfmv")
+expand_icon = true
+
+[node name="Button" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_3xb1j")
+expand_icon = true
+
+[node name="Button4" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_x8a2y")
+expand_icon = true
+
+[node name="Button5" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_aynbm")
+expand_icon = true
+
+[node name="Button6" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_ha8wa")
+expand_icon = true
+
+[node name="Button7" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_iijrl")
+expand_icon = true
+
+[node name="Button8" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_ty3aa")
+expand_icon = true
+
+[node name="Button9" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_126uv")
+expand_icon = true
+
+[node name="Button10" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_m611q")
+expand_icon = true
+
+[node name="Button11" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+icon = SubResource("AtlasTexture_bbej1")
+expand_icon = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+offset_left = 163.0
+offset_top = 96.0
+offset_right = 1315.0
+offset_bottom = 960.0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 864)
+render_target_update_mode = 4
+
+[node name="EditorCanvas" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_ido1c")]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button2" to="." method="_on_tool_button_pressed" binds= [Vector2i(15, 4)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button3" to="." method="_on_tool_button_pressed" binds= [Vector2i(7, 6)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button" to="." method="_on_tool_button_pressed" binds= [Vector2i(0, 0)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button4" to="." method="_on_tool_button_pressed" binds= [Vector2i(6, 6)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button5" to="." method="_on_tool_button_pressed" binds= [Vector2i(7, 2)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button6" to="." method="_on_tool_button_pressed" binds= [Vector2i(8, 6)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button7" to="." method="_on_tool_button_pressed" binds= [Vector2i(9, 0)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button8" to="." method="_on_tool_button_pressed" binds= [Vector2i(6, 7)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button9" to="." method="_on_tool_button_pressed" binds= [Vector2i(5, 6)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button10" to="." method="_on_tool_button_pressed" binds= [Vector2i(4, 6)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button11" to="." method="_on_tool_button_pressed" binds= [Vector2i(11, 7)]]

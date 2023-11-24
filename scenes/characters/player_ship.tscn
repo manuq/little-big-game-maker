@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2yk8am4qxd1e"]
+
+[ext_resource type="Script" path="res://scenes/characters/ship.gd" id="1_i2u5g"]
+[ext_resource type="Texture2D" uid="uid://gfxeh8eul1hw" path="res://assets/tiles/tilemap.png" id="2_hnclt"]
+[ext_resource type="Script" path="res://scenes/characters/PlayerShipControl.gd" id="3_agkvc"]
+[ext_resource type="PackedScene" uid="uid://cm5pmv3b4h3jm" path="res://scenes/characters/player_indicator.tscn" id="3_poybu"]
+[ext_resource type="PackedScene" uid="uid://bndagky0j8slw" path="res://scenes/characters/ship_particles.tscn" id="5_aw8iq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2hwh"]
+radius = 5.0
+height = 10.0
+
+[node name="PlayerShip" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_i2u5g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hnclt")
+region_enabled = true
+region_rect = Rect2(114, 114, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_y2hwh")
+
+[node name="control" type="Node2D" parent="."]
+script = ExtResource("3_agkvc")
+
+[node name="indicator" parent="." instance=ExtResource("3_poybu")]
+
+[node name="particles" parent="." instance=ExtResource("5_aw8iq")]

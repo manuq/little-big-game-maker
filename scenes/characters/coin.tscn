@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cruj1k87510l5"]
+
+[ext_resource type="Script" path="res://scenes/characters/coin.gd" id="1_mpj3n"]
+[ext_resource type="SpriteFrames" uid="uid://dt2mmc6wms2t1" path="res://scenes/characters/sprite_frames.tres" id="2_acw8m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajnw3"]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_mpj3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ajnw3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_acw8m")
+animation = &"coin"
+autoplay = "coin"
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bt0chshuijqfk"]
+
+[ext_resource type="Script" path="res://scenes/characters/slug.gd" id="1_i720c"]
+[ext_resource type="Texture2D" uid="uid://gfxeh8eul1hw" path="res://assets/tiles/tilemap.png" id="2_mrmpl"]
+[ext_resource type="Script" path="res://scenes/characters/npc_slug_control.gd" id="3_bq02f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vvv3"]
+size = Vector2(10, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcjhe"]
+atlas = ExtResource("2_mrmpl")
+region = Rect2(76, 114, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ptle"]
+atlas = ExtResource("2_mrmpl")
+region = Rect2(76, 133, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qcvpx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcjhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ptle")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="NPCSlug" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_i720c")
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+position = Vector2(-6, 9)
+target_position = Vector2(0, 11)
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+position = Vector2(6, 9)
+target_position = Vector2(0, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.19209e-07, 4)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_5vvv3")
+
+[node name="control" type="Node2D" parent="."]
+script = ExtResource("3_bq02f")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qcvpx")
+autoplay = "default"

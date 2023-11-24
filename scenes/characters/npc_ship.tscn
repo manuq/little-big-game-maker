@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dllf25keor4gy"]
+
+[ext_resource type="Script" path="res://scenes/characters/ship.gd" id="1_ntxne"]
+[ext_resource type="Texture2D" uid="uid://gfxeh8eul1hw" path="res://assets/tiles/tilemap.png" id="2_6oqfw"]
+[ext_resource type="Script" path="res://scenes/characters/NPCShipControl.gd" id="3_jlhm0"]
+[ext_resource type="PackedScene" uid="uid://bndagky0j8slw" path="res://scenes/characters/ship_particles.tscn" id="4_run2b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2hwh"]
+radius = 6.0
+height = 12.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_ntxne")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6oqfw")
+region_enabled = true
+region_rect = Rect2(95, 114, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_y2hwh")
+
+[node name="control" type="Node2D" parent="."]
+script = ExtResource("3_jlhm0")
+
+[node name="particles" parent="." instance=ExtResource("4_run2b")]

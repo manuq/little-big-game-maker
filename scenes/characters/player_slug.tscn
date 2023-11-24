@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://comiiga5fr5u"]
+
+[ext_resource type="Script" path="res://scenes/characters/slug.gd" id="1_a3otl"]
+[ext_resource type="Texture2D" uid="uid://gfxeh8eul1hw" path="res://assets/tiles/tilemap.png" id="2_75xx3"]
+[ext_resource type="Script" path="res://scenes/characters/player_slug_control.gd" id="3_0rvti"]
+[ext_resource type="PackedScene" uid="uid://cm5pmv3b4h3jm" path="res://scenes/characters/player_indicator.tscn" id="4_nwljg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2t3k"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaijp"]
+atlas = ExtResource("2_75xx3")
+region = Rect2(152, 133, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jnbn"]
+atlas = ExtResource("2_75xx3")
+region = Rect2(152, 114, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6rit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaijp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jnbn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlayerSlug" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_a3otl")
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+position = Vector2(-4, 9)
+target_position = Vector2(0, 11)
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+position = Vector2(4, 9)
+target_position = Vector2(0, 11)
+
+[node name="Sprite2DFFF" type="Sprite2D" parent="."]
+texture = ExtResource("2_75xx3")
+region_enabled = true
+region_rect = Rect2(152, 114, 18, 18)
+
+[node name="indicator" parent="." instance=ExtResource("4_nwljg")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_v2t3k")
+
+[node name="control" type="Node2D" parent="."]
+script = ExtResource("3_0rvti")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h6rit")
+autoplay = "default"

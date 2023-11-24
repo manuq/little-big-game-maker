@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfrov42bq7ob0"]
+
+[ext_resource type="Script" path="res://scenes/characters/platformer.gd" id="1_ddike"]
+[ext_resource type="Texture2D" uid="uid://gfxeh8eul1hw" path="res://assets/tiles/tilemap.png" id="1_i4qbf"]
+[ext_resource type="Script" path="res://scenes/characters/NPCPlatformerControl.gd" id="3_87b05"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2t3k"]
+radius = 4.0
+height = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr15q"]
+atlas = ExtResource("1_i4qbf")
+region = Rect2(95, 133, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo5u0"]
+atlas = ExtResource("1_i4qbf")
+region = Rect2(114, 133, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sbglo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr15q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo5u0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_ddike")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_v2t3k")
+
+[node name="control" type="Node2D" parent="."]
+script = ExtResource("3_87b05")
+flip_on_edges = true
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="control"]
+position = Vector2(-4, 9)
+target_position = Vector2(0, 11)
+
+[node name="RayCast2DRight" type="RayCast2D" parent="control"]
+position = Vector2(4, 9)
+target_position = Vector2(0, 11)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sbglo")
+autoplay = "default"

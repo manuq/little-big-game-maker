@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm5pmv3b4h3jm"]
+
+[ext_resource type="Texture2D" uid="uid://gfxeh8eul1hw" path="res://assets/tiles/tilemap.png" id="1_46nj1"]
+[ext_resource type="Script" path="res://scenes/characters/player_indicator.gd" id="2_h4cjk"]
+
+[node name="Sprite2D2" type="Sprite2D"]
+position = Vector2(0, -18)
+texture = ExtResource("1_46nj1")
+region_enabled = true
+region_rect = Rect2(209, 95, 18, 18)
+script = ExtResource("2_h4cjk")
