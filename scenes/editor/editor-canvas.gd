@@ -21,7 +21,7 @@ func _ready():
 	set_current_tile(Constants.COIN)
 	var data = GameManager.load_game()
 	%TileMap.clear()
-	%TileMap.from_data(data)
+	GameManager.set_tilemap_data(%TileMap, data)
 
 func get_tilemap():
 	return %TileMap

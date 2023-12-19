@@ -51,4 +51,14 @@ const NPCS = [
 	NPC_SLUG,
 ]
 
+const RESOURCE_FOR_OBJECT = {
+	COIN: "res://scenes/characters/coin.tscn",
+	PLAYER_PLATFORMER: "res://scenes/characters/player-platformer.tscn",
+	NPC_PLATFORMER: "res://scenes/characters/npc_platformer.tscn",
+	PLAYER_SHIP: "res://scenes/characters/player_ship.tscn",
+	NPC_SHIP: "res://scenes/characters/npc_ship.tscn",
+	PLAYER_SLUG: "res://scenes/characters/player_slug.tscn",
+	NPC_SLUG: "res://scenes/characters/npc_slug.tscn",
+}
+
 var ALL = ITEMS + BLOCKS + PLAYERS + NPCS

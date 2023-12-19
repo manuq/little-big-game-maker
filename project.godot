@@ -33,6 +33,10 @@ mouse_cursor/tooltip_position_offset=Vector2(64, 64)
 
 movie_writer/movie_file="/sysroot/home/manuq/godot-projects/recordings/recording.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/game_importer/plugin.cfg")
+
 [input]
 
 save={

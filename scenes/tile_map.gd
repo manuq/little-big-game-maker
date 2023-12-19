@@ -6,12 +6,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func from_data(data):
-	for d in data:
-		set_cell(0, Vector2i(d["pos_x"], d["pos_y"]), 0, Vector2i(d["tile_x"], d["tile_y"]))
-
-
 func to_data():
 	var data = []
 	for cell in get_used_cells(0):

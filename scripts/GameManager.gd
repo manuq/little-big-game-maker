@@ -2,8 +2,18 @@ extends Node
 
 const FILENAME = "user://game-01.save"
 
+var scenes = {}
+var parameters = {
+	Constants.NPC_PLATFORMER: { "SPEED": 50.0 },
+	Constants.PLAYER_SLUG: { "SPEED": 50.0 },
+	Constants.NPC_SHIP: { "SPEED": 100.0, "ROTATION_SPEED": 3.0 },
+	# ROTATION_SPEED
+}
+
+var editor_pack = preload("res://scenes/editor/editor.tscn")
+var game_pack = preload("res://scenes/game/game.tscn")
 var editor_scene: Editor = null
-var game_scene: Game = preload("res://scenes/game/game.tscn").instantiate()
+var game_scene: Game = null
 
 func quit():
 	save_game(editor_scene.get_tilemap())
@@ -15,7 +25,13 @@ func on_window_quit(event):
 
 func _ready():
 	var root = get_tree().root
-	editor_scene = root.get_child(root.get_child_count() - 1)
+	var main_scene = root.get_child(root.get_child_count() - 1)
+	if main_scene is Editor:
+		editor_scene = main_scene
+		game_scene = game_pack.instantiate()
+	elif main_scene is Game:
+		game_scene = main_scene
+		editor_scene = editor_pack.instantiate()
 	DisplayServer.window_set_window_event_callback(on_window_quit)
 
 func _input(event):
@@ -55,6 +71,36 @@ func load_game():
 		var data = json.get_data()
 		return data
 
+func grid_coords_to_pixels(coord: Vector2i):
+	return coord * (Constants.GRID_SIZE) + Constants.GRID_SIZE / 2
+
+func set_game_data(objects: Node2D, camera: Camera2D, tile_map: GameTileMap, data: Array, root: Node2D = null):
+	var tile_data = []
+
+	for d in data:
+		var v = Vector2i(d["tile_x"], d["tile_y"])
+		if v in Constants.RESOURCE_FOR_OBJECT.keys():
+			if v not in scenes.keys():
+				scenes[v] = load(Constants.RESOURCE_FOR_OBJECT[v])
+			var obj = scenes[v].instantiate()
+			var params = parameters.get(v, {})
+			for pk in params.keys():
+				obj.set(pk, params[pk])
+			obj.position = grid_coords_to_pixels(Vector2i(d["pos_x"], d["pos_y"]))
+			objects.add_child(obj)
+			if root:
+				obj.owner = root
+			if v in Constants.PLAYERS:
+				camera.reparent(obj)
+				camera.position = Vector2.ZERO
+		else:
+			tile_data.append(d)
+		
+		set_tilemap_data(tile_map, tile_data)
+
+func set_tilemap_data(tile_map: GameTileMap, data: Array):
+	for d in data:
+		tile_map.set_cell(0, Vector2i(d["pos_x"], d["pos_y"]), 0, Vector2i(d["tile_x"], d["tile_y"]))
 
 func save_game(tilemap: GameTileMap):
 	var file = FileAccess.open(FILENAME, FileAccess.WRITE)
