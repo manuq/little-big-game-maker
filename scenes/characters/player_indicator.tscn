@@ -1,11 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cm5pmv3b4h3jm"]
 
-[ext_resource type="Texture2D" uid="uid://gfxeh8eul1hw" path="res://assets/tiles/tilemap.png" id="1_46nj1"]
+[ext_resource type="SpriteFrames" uid="uid://dt2mmc6wms2t1" path="res://scenes/characters/sprite_frames.tres" id="2_acs2s"]
 [ext_resource type="Script" path="res://scenes/characters/player_indicator.gd" id="2_h4cjk"]
 
-[node name="Sprite2D2" type="Sprite2D"]
-position = Vector2(0, -18)
-texture = ExtResource("1_46nj1")
-region_enabled = true
-region_rect = Rect2(209, 95, 18, 18)
+[node name="Node2D" type="Node2D"]
 script = ExtResource("2_h4cjk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -18)
+sprite_frames = ExtResource("2_acs2s")
+animation = &"indicator"
+autoplay = "indicator"
+frame_progress = 0.960387

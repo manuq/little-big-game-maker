@@ -85,7 +85,7 @@ region_rect = Rect2(209, 133, 18, 18)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 root_node = NodePath("../..")
-autoplay = "selected_tile"
 libraries = {
 "": SubResource("AnimationLibrary_7arww")
 }
+autoplay = "selected_tile"

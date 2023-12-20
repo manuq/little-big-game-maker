@@ -20,8 +20,9 @@ func _ready():
 	# get_tree().set_auto_accept_quit(false)
 	set_current_tile(Constants.COIN)
 	var data = GameManager.load_game()
-	%TileMap.clear()
-	GameManager.set_tilemap_data(%TileMap, data)
+	if data:
+		%TileMap.clear()
+		GameManager.set_tilemap_data(%TileMap, data)
 
 func get_tilemap():
 	return %TileMap
@@ -91,7 +92,7 @@ func _input(event):
 func _process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var ip = get_grid_index()
-		if ip.x < 2 or ip.y < 0:
+		if ip.x < 2 or ip.y < 2:
 			pass
 		elif dragging != null:
 			pass

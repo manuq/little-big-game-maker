@@ -28,3 +28,7 @@ func get_tilemap():
 
 func _on_tool_button_pressed(coords: Vector2i):
 	%EditorCanvas.set_current_tile(coords)
+
+
+func _on_clear_pressed():
+	%EditorCanvas.clear()

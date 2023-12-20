@@ -1279,4 +1279,15 @@ animations = [{
 "loop": true,
 "name": &"coin",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lak68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcvjy")
+}],
+"loop": true,
+"name": &"indicator",
+"speed": 3.0
 }]

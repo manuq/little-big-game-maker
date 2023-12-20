@@ -15,11 +15,30 @@ color = Color(0.196078, 0.831373, 0.968627, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 24.0
-offset_top = 20.0
-offset_right = 67.0
-offset_bottom = 51.0
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -918.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(90, 72)
+layout_mode = 2
 text = "EDIT"
 
 [node name="objects" type="Node2D" parent="."]
@@ -32,4 +51,4 @@ unique_name_in_owner = true
 [node name="Camera2D" parent="." instance=ExtResource("3_lxqob")]
 unique_name_in_owner = true
 
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/CenterContainer/Button" to="." method="_on_button_pressed"]

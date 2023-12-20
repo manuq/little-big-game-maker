@@ -69,22 +69,29 @@ theme = SubResource("Theme_3bn6q")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Toolbar"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 71.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+grow_vertical = 2
+theme_override_constants/margin_left = 25
 theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 45
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Toolbar/MarginContainer"]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 91.67)
 layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(90, 72)
 layout_mode = 2
 text = "PLAY"
 
@@ -170,6 +177,23 @@ layout_mode = 2
 icon = SubResource("AtlasTexture_bbej1")
 expand_icon = true
 
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+text = "CLEAR"
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
 offset_left = 163.0
 offset_top = 96.0
@@ -184,7 +208,7 @@ render_target_update_mode = 4
 [node name="EditorCanvas" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_ido1c")]
 unique_name_in_owner = true
 
-[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button2" to="." method="_on_tool_button_pressed" binds= [Vector2i(15, 4)]]
 [connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button3" to="." method="_on_tool_button_pressed" binds= [Vector2i(7, 6)]]
 [connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button" to="." method="_on_tool_button_pressed" binds= [Vector2i(0, 0)]]
@@ -196,3 +220,4 @@ unique_name_in_owner = true
 [connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button9" to="." method="_on_tool_button_pressed" binds= [Vector2i(5, 6)]]
 [connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button10" to="." method="_on_tool_button_pressed" binds= [Vector2i(4, 6)]]
 [connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/GridContainer/Button11" to="." method="_on_tool_button_pressed" binds= [Vector2i(11, 7)]]
+[connection signal="pressed" from="CanvasLayer/Toolbar/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/Button" to="." method="_on_clear_pressed"]

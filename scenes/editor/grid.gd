@@ -1,9 +1,10 @@
+@tool
 extends Node2D
 
-@onready var GRID_SIZE = %TileMap.tile_set.tile_size
+@export var COLUMNS: int = 36
+@export var ROWS: int = 27
 
-const COLUMNS = 36
-const ROWS = 27
+@onready var GRID_SIZE = %TileMap.tile_set.tile_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

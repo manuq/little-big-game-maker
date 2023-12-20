@@ -89,8 +89,7 @@ func set_game_data(objects: Node2D, camera: Camera2D, tile_map: GameTileMap, dat
 				obj.set(pk, params[pk])
 			obj.position = grid_coords_to_pixels(Vector2i(d["pos_x"], d["pos_y"]))
 			objects.add_child(obj)
-			if root:
-				obj.owner = root
+			obj.owner = root
 			if v in Constants.PLAYERS:
 				camera.reparent(obj)
 				camera.position = Vector2.ZERO
