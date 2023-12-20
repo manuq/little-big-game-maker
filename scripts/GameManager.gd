@@ -16,7 +16,8 @@ var editor_scene: Editor = null
 var game_scene: Game = null
 
 func quit():
-	save_game(editor_scene.get_tilemap())
+	if editor_scene:
+		save_game(editor_scene.get_tilemap())
 	get_tree().quit()
 
 func on_window_quit(event):
