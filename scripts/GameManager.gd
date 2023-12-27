@@ -12,6 +12,7 @@ var parameters = {
 
 var editor_pack = preload("res://scenes/editor/editor.tscn")
 var game_pack = preload("res://scenes/game/game.tscn")
+var transition_pack = preload("res://scenes/transition.tscn")
 var editor_scene: Editor = null
 var game_scene: Game = null
 
@@ -46,16 +47,24 @@ func switch_to_game():
 	call_deferred("_deferred_switch_to_game")
 
 func _deferred_switch_to_editor():
+	await _do_transition()
 	get_tree().root.remove_child(game_scene)
 	get_tree().root.add_child(editor_scene)
 	get_tree().current_scene = editor_scene
 
 func _deferred_switch_to_game():
+	await _do_transition()
 	save_game(editor_scene.get_tilemap())
 	get_tree().root.remove_child(editor_scene)
 	game_scene.from_data(load_game())
 	get_tree().root.add_child(game_scene)
 	get_tree().current_scene = game_scene
+
+func _do_transition():
+	var transition_scene = transition_pack.instantiate()
+	get_tree().root.add_child(transition_scene)
+	transition_scene.transition()
+	await transition_scene.half_transition_completed
 
 func load_game():
 	if not FileAccess.file_exists(FILENAME):
