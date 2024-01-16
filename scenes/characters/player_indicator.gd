@@ -1,3 +1,4 @@
+class_name PlayerIndicator
 extends Node2D
 
 func _ready():

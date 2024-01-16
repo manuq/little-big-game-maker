@@ -1,5 +1,5 @@
+class_name NPCPlatformerControl
 extends Node2D
-#  class_name NPCPlatformerControl
 
 @export var flip_on_edges = false
 

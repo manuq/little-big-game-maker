@@ -1,3 +1,4 @@
+class_name Slug
 extends CharacterBody2D
 
 @export var SPEED = 10.0

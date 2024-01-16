@@ -1,3 +1,4 @@
+class_name NPCShipControl
 extends Node2D
 
 var direction = -1

@@ -1,3 +1,4 @@
+class_name Platformer
 extends CharacterBody2D
 
 

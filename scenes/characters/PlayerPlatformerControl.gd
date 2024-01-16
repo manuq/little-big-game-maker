@@ -1,5 +1,5 @@
+class_name PlayerPlatformerControl
 extends Node2D
-#  class_name PlayerPlatformerControl
 
 func is_jumping():
 	return Input.is_action_just_pressed("ui_accept")

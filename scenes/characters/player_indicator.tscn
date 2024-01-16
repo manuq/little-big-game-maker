@@ -3,7 +3,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dt2mmc6wms2t1" path="res://scenes/characters/sprite_frames.tres" id="2_acs2s"]
 [ext_resource type="Script" path="res://scenes/characters/player_indicator.gd" id="2_h4cjk"]
 
-[node name="Node2D" type="Node2D"]
+[node name="PlayerIndicator" type="Node2D"]
 script = ExtResource("2_h4cjk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

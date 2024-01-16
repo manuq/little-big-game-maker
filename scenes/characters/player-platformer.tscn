@@ -31,7 +31,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="PlayerPlatformer" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_iumff")
 

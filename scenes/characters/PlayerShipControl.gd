@@ -1,3 +1,4 @@
+class_name PlayerShipControl
 extends Node2D
 
 func is_moving_forward():
