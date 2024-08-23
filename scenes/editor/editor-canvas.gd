@@ -115,4 +115,3 @@ func _process(delta):
 		var ip = get_grid_index()
 		var atlas_coords = %TileMap.get_cell_atlas_coords(0, ip)
 		set_current_tile(atlas_coords)
-
